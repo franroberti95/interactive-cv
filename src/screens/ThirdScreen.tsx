@@ -1,21 +1,8 @@
 // @ts-nocheck
 import React, {useEffect, useRef} from 'react';
 import styled from "styled-components";
-import AndroidIcon from '../assets/android-icon.svg';
-import AppleIcon from '../assets/apple-icon.svg';
-import FirebaseIcon from '../assets/firebase-icon.svg';
-import GraphQlIcon from '../assets/graphql-icon.svg';
-import MobxIcon from '../assets/mobx-icon.svg';
-import NextIcon from '../assets/next-icon.svg';
-import ReduxIcon from '../assets/redux-icon.svg';
-import ReactIcon from '../assets/react-icon.svg';
 
 const ThirdScreen = () => {
-
-    const nodes = {
-
-    };
-
     useEffect(()=>{
     },[])
 

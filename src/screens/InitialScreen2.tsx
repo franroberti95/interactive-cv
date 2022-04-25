@@ -34,13 +34,14 @@ const InitialScreen = () => {
     const underlineRef = useRef(null);
     const creativeDevRefText = useRef(null);
     useEffect(()=>{
-        /*controller = new ScrollMagic.Controller();
-        scene = new ScrollMagic.Scene({triggerElement: "#cralt-trigger-rotation", duration: window?.innerHeight/2})
+        controller = new ScrollMagic.Controller();
+        scene = new ScrollMagic.Scene({triggerElement: "#text-scroll-trigger", duration: window?.innerHeight/4})
             // animate color and top border in relation to scroll position
             //.setTween("#cralt", {rotation: 360}) // the tween durtion can be omitted and defaults to 1
-            .setTween("#cralt", {rotateY: 180}) // the tween durtion can be omitted and defaults to 1
+            //.setTween("#text-container", {y: '50%', rotateZ: 450, scale: 0.7}) // the tween durtion can be omitted and defaults to 1
+            .setTween("#cralt", {y: '50%'}) // the tween durtion can be omitted and defaults to 1
             .addTo(controller);
-        */
+
         /*scene = new ScrollMagic.Scene({triggerElement: "#creative-dev", duration: Math.max(700,window?.innerHeight/2)})
             .setPin("#creative-dev")
             .addTo(controller);*/
@@ -56,17 +57,18 @@ const InitialScreen = () => {
         <Stars2/>
         <Stars3/>
         <Body>
-            <CraltImageContainer>
-                <Cralt id='cralt' />
+            <TextScrollTrigger id={'text-scroll-trigger'}></TextScrollTrigger>
+            <CraltImageContainer id='cralt' >
+                <Cralt />
             </CraltImageContainer>
-            <TextContainer>
-                <MeetCraltTextContainer>
-                    <MeetCraltText ref={meetCraltRefText}>Franco Roberti</MeetCraltText>
-                    <Underline ref={underlineRef}/>
-                </MeetCraltTextContainer>
-                <MeetCraltText ref={creativeDevRefText}>Creative Dev</MeetCraltText>
-            </TextContainer>
         </Body>
+        <TextContainer id={'text-container'}>
+            <MeetCraltTextContainer>
+                <NameText ref={meetCraltRefText}>Franco Roberti</NameText>
+                <Underline ref={underlineRef}/>
+            </MeetCraltTextContainer>
+            <MeetCraltText ref={creativeDevRefText}>Creative Dev</MeetCraltText>
+        </TextContainer>
     </InitialScreenContainer>
 };
 
@@ -78,12 +80,24 @@ const Body = styled.div`
   height: 100vh;
 `;
 
+const TextScrollTrigger = styled.div`
+  grid-area: 2 / 1 / 3 / 2;
+`;
+
 const CraltImageContainer = styled.div`
   grid-area: 1 / 1 / 3 / 2;
 `;
 
 const TextContainer = styled.div`
-  grid-area: 2 / 1 / 3 / 2; 
+  position: absolute;
+  bottom: 35px;
+  left: 25px;
+  z-index: 10;
+  padding: 15px;
+  border-radius: 8px;
+  border-color: white;
+  border-width: 1px;
+  border-style: solid;
 `;
 
 const Stars1 = styled.div`
@@ -163,7 +177,7 @@ const Stars3 = styled.div`
 
 const Underline = styled.div`
   height:2px;
-  width:185px;
+  width:220px;
   background-color: white;
   position: absolute;
   bottom: 0;
@@ -171,7 +185,7 @@ const Underline = styled.div`
 `;
 
 const MeetCraltTextContainer = styled.div`
-  width: 185px;
+  width: 220px;
   margin-left: 10%;
   position: relative;
 `;
@@ -181,6 +195,11 @@ const MeetCraltText = styled.h3`
   font-size: 24px;
   margin: 0;
   margin-top: 25px;
+  margin-bottom: 10px;
+`;
+const NameText = styled(MeetCraltText)`
+  margin-top: 10px;
+  margin-bottom: 0;
 `;
 
 const CraltContainer = styled.div`
@@ -213,7 +232,6 @@ const InitialScreenContainer = styled.div`
   height: 100vh;
   //background-image: -webkit-linear-gradient(30deg, #013A6B 50%, #004E95 50%);
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-  overflow: hidden;
 `;
 
 

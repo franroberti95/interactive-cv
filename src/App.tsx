@@ -1,7 +1,7 @@
 // @ts-nocheck
 import React from 'react';
 import InitialScreen from './screens/InitialScreen2';
-import SecondScreen from "./screens/SecondScreen";
+import SecondScreen from "./screens/SecondScreen2";
 import ThirdScreen from "./screens/ThirdScreen";
 function App() {
   return (
